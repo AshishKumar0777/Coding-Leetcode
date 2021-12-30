@@ -1,0 +1,18 @@
+//To count the number of 1's bit present inside a binary String.
+
+public class Main{
+public static void main(String[] args){
+Scanner scn = new Scanner(System.in);
+int n = scn.nextInt();
+
+int counter = 0;
+
+while( n != 0){
+  int rsbm = n & -n;
+  n -= rsbm;
+  counter++;
+}
+
+System.out.println(counter);
+    }
+}
