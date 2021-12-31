@@ -1,0 +1,47 @@
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> output = new ArrayList<>();
+        /*
+        for(int i = 1; i <= n; i++){
+            
+            boolean divisibleBy3 = (i % 3 == 0);
+            boolean divisibleBy5 = (i % 5 == 0);
+            
+            if(divisibleBy3 && divisibleBy5){
+                output.add("FizzBuzz");
+            }else if(divisibleBy3){
+                output.add("Fizz");
+            }else if(divisibleBy5){
+                output.add("Buzz");
+            }else{
+                output.add(Integer.toString(i));
+            }
+        }
+        return output;
+        */
+        
+        HashMap<Integer, String> map = new HashMap<>(){
+            {
+            put(3, "Fizz");
+            put(5, "Buzz");
+            }
+        };
+        
+        for(int i = 1; i <= n; i++){
+            String ans = "";
+            
+            for(Integer key : map.keySet()){
+                if(i % key == 0){
+                    ans += map.get(key);
+                }
+            }
+            
+            if(ans.equals("")){
+                ans += Integer.toString(i);
+            }
+            
+            output.add(ans);
+        }
+        return output;
+    }
+}
