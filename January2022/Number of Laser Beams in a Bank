@@ -9,8 +9,8 @@ class Solution {
             
             for(char c : ch){
                 if(c == '1') 
-                {count++;
-                 
+                {
+                count++;                 
                 }
             }
             if(count > 0){
