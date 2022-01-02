@@ -1,0 +1,39 @@
+class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        /*
+        int count = 0;
+        for(int i = 0; i < time.length - 1; i++){
+            for(int j = i + 1; j < time.length; j++){
+                int ans = (time[i] + time[j]) % 60;
+                if(ans == 0) count++;
+            }
+        }
+        return count;
+        
+        //Time Limit Exceeded Approach
+        */
+        
+        int[] remainderMap = new int[60];
+        
+        for(int remainder : time){
+            int num = (remainder % 60);
+            remainderMap[num]++;
+        }
+        
+        int ans = 0;
+        
+        for(int i = 1; i < 30; i++){
+            ans += (remainderMap[i] * remainderMap[60 - i]);
+        }
+        
+        if(remainderMap[0] > 0){
+            ans += remainderMap[0] * (remainderMap[0] - 1) / 2;
+        }
+        
+        if(remainderMap[30] > 0){
+            ans += remainderMap[30] * (remainderMap[30] - 1) / 2;
+        }
+        
+        return ans;
+    }
+}
