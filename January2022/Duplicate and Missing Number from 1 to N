@@ -1,0 +1,42 @@
+public static void solution(int[] arr){
+int xor = 0;
+
+for(int i = 0; i < arr.length; i++){
+xor ^= arr[i];
+}
+
+for(int i = 1; i <= arr.length; i++){
+xor ^= i;
+}
+
+int rsb = xor & -xor;
+
+int x = 0;
+int y = 0;
+
+for(int val : arr){
+if((val & rsb) == 0){
+x = x ^ val;
+}else{
+y = y ^ val;
+}
+}
+
+for(int i = 1; i <= arr.length; i++){
+if((val & rsb) == 0){
+x = x ^ i;
+}else{
+y = y ^ i;
+}
+}
+
+for(int val : arr){
+if(val == x){
+System.out.println("Missing number ->" + y);
+System.out.println("Repeating number ->" + x);
+}else if(val == y){
+System.out.println("Missing number ->" + x);
+System.out.println("Repeating number ->" + y);
+}
+}
+}
