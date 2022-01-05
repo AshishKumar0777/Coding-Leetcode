@@ -13,7 +13,7 @@ class Solution {
         
         return Integer.parseInt(ans, 2);
         */
-        
+        /*
         if(n == 0) return 1;
         
         int num = 0;
@@ -24,5 +24,20 @@ class Solution {
         
         System.out.println(num);
         return n ^ num;
+        */
+        if(n == 0){
+        return 1;
+        }
+        
+        int multi = 1;
+        int newNo = 0;
+        
+        while(n != 0){
+        int binaryRep = (num % 2 == 0) ? 1 : 0;
+        n = n / 2;
+        newNo = binaryRep * multi + newNo;
+        multi = multi * 2;
+        }
+        return newNo;
     }
 }
