@@ -1,0 +1,40 @@
+// Printing 1 to N
+
+public class Main{
+
+public static void main(String[] args){
+  print(7);
+}
+
+public static void print(int n){
+  
+  if(n == 1){
+  System.out.println(n);
+  return;
+  }
+  
+  print(n - 1);
+  
+  System.out.println(n);
+}
+}
+
+// Printing N to 1
+
+public class Main{
+public static void main(String[] args){
+  print(7);
+}
+
+public static void print(int n){
+  
+  if(n == 1){
+  System.out.println(n);
+  return;
+  }
+  
+  System.out.println(n);
+  
+  print(n -1);
+}
+}
