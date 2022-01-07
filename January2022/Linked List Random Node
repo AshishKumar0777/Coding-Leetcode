@@ -13,4 +13,28 @@ public int getRandom(){
 int z = (int)(Math.random() * al.size());
 return al.get(z);
 }
+
+//using the reservoir sampling algorithm
+
+ListNode head = null;
+    Random rand = null;
+    
+    public Solution(ListNode head){
+        this.head = head;
+        this.rand = new Random();
+    }
+    
+    public int getRandom(){
+        int res = -1;
+        
+        ListNode t = head;
+        
+        for(int i = 1; t != null; i++){
+            if(rand.nextInt(i) == i - 1){
+                res = t.val;
+            }
+            t = t.next;
+        }
+        return res;
+    }
 }
