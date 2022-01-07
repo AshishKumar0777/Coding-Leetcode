@@ -1,0 +1,25 @@
+class Solution {
+    public int fib(int n) {
+        int last1 = 0, last2 = 1;
+        
+        if(n <= 1){
+            return n;
+        }
+       /*
+        int ans1 = fib(n - 2);
+        int ans2 = fib(n - 1);
+        
+        return ans1 + ans2;
+        */
+        
+        int i = 2;
+        
+        while(i <= n){
+            int temp = last2;            
+            last2 = last2 + last1;
+            last1 = temp;
+            i++;
+        }
+        return last2;
+    }
+}
