@@ -1,0 +1,16 @@
+class Solution{
+
+ArrayList<Integer> al = new ArrayList<>();
+
+public Solution(LinkedList head){
+      while(head != null){
+          al.add(head.val);
+          head = head.next;
+      }
+}
+
+public int getRandom(){
+int z = (int)(Math.random() * al.size());
+return al.get(z);
+}
+}
