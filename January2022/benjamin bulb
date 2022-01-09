@@ -1,0 +1,20 @@
+Input Format :
+n, an integer
+Output Format :
+b1 b2 b3 b4 .. all bulbs that will be on after nth wave
+
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+    // write your code here  
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    
+    //Here after observing we found out that only bulbs with perfect numbers will be on as they have odd number of factors.
+    for(int i = 1; i * i <= n; i++){
+        System.out.println(i * i);
+    }
+   }
+  }
