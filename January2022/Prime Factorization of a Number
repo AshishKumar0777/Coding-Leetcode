@@ -18,7 +18,9 @@ public static void main(String[] args) {
           System.out.print(div + " ");
       }
   }
-  
+ // This case should be included because suppose there is a number like 46. We get prime factors as 2, 23 but due to div * div, div will not be able to move beyond 4 
+ So, n will not be equal 1 and it will only be the last prime factor left.
+ 
   if(n != 1){
       System.out.print(n);
   }
