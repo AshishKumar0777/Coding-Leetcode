@@ -1,0 +1,35 @@
+Input : 28346751
+Output : 73425681
+
+1 -> 1              1 -> 1
+2 -> 5              2 -> 8
+3 -> 7              3 -> 6
+4 -> 6   Inverse => 4 -> 5
+5 -> 4              5 -> 2
+6 -> 3              6 -> 4
+7 -> 8              7 -> 3
+8 -> 2              8 -> 7
+
+
+
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) {
+  // write your code here  
+  Scanner scn = new Scanner(System.in);
+  int n = scn.nextInt();
+  
+  int sum = 0;
+  int i = 10, j = 1;
+  while(n != 0){
+      int r = (n % 10) - 1;
+      int temp = j * (int)(Math.pow(i, r));
+      sum += temp;
+      j++;
+      n = n / 10;
+  }
+  System.out.println(sum);
+ }
+}
