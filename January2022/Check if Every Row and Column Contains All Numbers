@@ -1,5 +1,6 @@
 class Solution{
 public boolean checkValid(int[][] matrix){
+/*
 int n = matrix.length;
 int m = matrix[0].length;
 
@@ -16,6 +17,45 @@ column.add(matrix[j][i]);
 if(row.size() < n || column.size() < m)
 return false;
 }
+return true;
+*/
+
+int row = matrix.length;
+int column = matrix[0].length;
+
+int n = row;
+
+int sum = (n *(n + 1)) / 2;
+
+for(int i = 0; i < row - 1; i++){
+if(matrix[0][i] == matrix[0][i + 1])
+return false;
+}
+
+for(int j = 0; j < column - 1; j++){
+if(matrix[j][0] == matrix[j + 1][0]){
+return false;
+}
+}
+
+for(int i = 0; i < row; i++){
+int sumRow = 0;
+for(int j = 0; j < column; j++){
+sumRow += matrix[i][j];
+}
+if(sumRow != sum)
+return false;
+}
+
+for(int i = 0; i < row; i++){
+int sumColumn = 0;
+for(int j = 0; j < column; j++){
+sumColumn += matrix[j][i];
+}
+if(sumColumn != sum)
+return false;
+}
+
 return true;
 }
 }
