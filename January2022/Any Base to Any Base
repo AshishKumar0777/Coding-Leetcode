@@ -1,0 +1,40 @@
+Sample Input :
+111001
+2
+3
+
+Sample Output :
+2010
+
+//First convert the sourceBase to decimal number and then convert the decimal number to destBase.
+
+import java.util.*;
+  
+  public class Main{
+  
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+      int n = scn.nextInt();
+      int sourceBase = scn.nextInt();
+     int  destBase= scn.nextInt();
+     
+     int p = 1, newNo = 0;
+     while(n > 0){
+        int r = n % 10;
+        n = n / 10;
+        
+        newNo = newNo + r * p;
+        p = p * sourceBase;
+     }
+     
+     int p2 = 1, newNo2 = 0;
+     while(newNo > 0){
+        int r = newNo % destBase;
+        newNo = newNo / destBase;
+        
+        newNo2 = newNo2 + r * p2;
+        p2 = p2 * 10;
+     }
+     System.out.print(newNo2);
+   }   
+  }
