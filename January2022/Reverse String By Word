@@ -1,0 +1,36 @@
+package com.string;
+
+public class ReverseStringByWord {
+
+	public static String reverseStringByWord(String str) {
+		String ans = "";
+		int currentWordStart = 0;
+		int i = 0;
+		
+		for(; i < str.length(); i++) {
+			
+				if(str.charAt(i) == ' ') {
+					int currentEndWord = i - 1;
+					String reversedWord = "";
+					for(int j = currentWordStart; j <= currentEndWord; j++) {
+					reversedWord = str.charAt(j) + reversedWord;
+				}
+					ans += reversedWord + " ";
+					currentWordStart = i + 1;
+			}
+		}
+		
+		int currentEndWord = i - 1;
+		String reversedWord = "";
+		for(int j = currentWordStart; j <= currentEndWord; j++) {
+		reversedWord = str.charAt(j) + reversedWord;
+	}
+		ans += reversedWord;
+		return ans;
+	}
+	
+	public static void main(String[] args) {
+		String str = "abc def ghi";
+		System.out.println(reverseStringByWord(str));
+	}
+}
