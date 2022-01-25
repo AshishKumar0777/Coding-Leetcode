@@ -8,6 +8,7 @@ Output: false
 
 class Solution {
     public boolean detectCapitalUse(String word) {
+    /*
         int len = word.length();
         String temp = word;
         String temp1 = word;
@@ -26,5 +27,18 @@ class Solution {
             }
         }
         return false;
+        */
+        
+        int capital = 0;
+        
+        for(char ch : word.toCharArray()){
+            if(Character.isUpperCase(ch)){
+                capital++;
+            }
+        }
+        
+        if(capital == word.length() || capital == 0) return true;
+        
+        return capital == 1 && Character.isUpperCase(word.charAt(0));
     }
 }
