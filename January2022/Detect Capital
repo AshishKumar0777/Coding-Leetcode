@@ -1,0 +1,30 @@
+Example 1:
+Input: word = "USA"
+Output: true
+
+Example 2:
+Input: word = "FlaG"
+Output: false
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int len = word.length();
+        String temp = word;
+        String temp1 = word;
+        String temp2 = word;
+        
+        if(temp.toUpperCase().equals(word)){
+            return true;
+        }else if(temp1.toLowerCase().equals(word)){
+            return true;
+        }else if(Character.isUpperCase(temp2.charAt(0))){
+            String result = temp2.substring(1, len).toLowerCase();
+            String ans = temp2.charAt(0) + result;
+
+            if(ans.equals(temp2)){
+                return true;
+            }
+        }
+        return false;
+    }
+}
