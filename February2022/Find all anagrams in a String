@@ -1,0 +1,70 @@
+Example 1:
+Input: s = "cbaebabacd", p = "abc"
+Output: [0,6]
+Explanation:
+The substring with start index = 0 is "cba", which is an anagram of "abc".
+The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+Example 2:
+Input: s = "abab", p = "ab"
+Output: [0,1,2]
+Explanation:
+The substring with start index = 0 is "ab", which is an anagram of "ab".
+The substring with start index = 1 is "ba", which is an anagram of "ab".
+The substring with start index = 2 is "ab", which is an anagram of "ab".
+
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> ans = new ArrayList<>();
+        
+        int unmatchingCharCount = p.length();
+        
+        if(p.length() > s.length()){
+            return ans;
+        }
+        
+        int[] freqCount = new int[26];
+        
+        for(int i = 0; i < p.length(); i++){
+            int index = p.charAt(i) - 'a';
+            freqCount[index]++;
+        }
+                
+        int start = 0; int end = 0;
+        for(;end < p.length(); end++){
+            int index = s.charAt(end) - 'a';
+            if(freqCount[index] > 0){
+                unmatchingCharCount--;
+            }
+            freqCount[index]--;
+        }
+        
+        if(unmatchingCharCount == 0){
+            ans.add(start);
+        }
+        
+        for(; end < s.length();){
+            int indexStart = s.charAt(start) - 'a';
+            
+            if(freqCount[indexStart] >= 0){
+                unmatchingCharCount++;
+            }
+            
+            freqCount[indexStart]++;
+            
+            start++;
+            
+            int indexEnd = s.charAt(end) - 'a';
+            if(freqCount[indexEnd] > 0){
+                unmatchingCharCount--;
+            }
+            freqCount[indexEnd]--;
+            
+            if(unmatchingCharCount == 0){
+                ans.add(start);
+            }
+            end++;
+        }
+        return ans;
+    }
+}
