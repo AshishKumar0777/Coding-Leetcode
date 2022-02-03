@@ -1,0 +1,19 @@
+import java.util.HashMap;
+
+public class Solution{
+public static int maxFreqNumber(int[] arr){
+HashMap<Integer, Integer> hm = new HashMap<>();
+
+for(int i : arr){
+hm.put(i, hm.getOrDefault(i, 0) + 1);
+}
+int max = 0, ans = Integer.Min_Value;
+for(iht i : arr){
+if(hm.get(i) > max){
+max = hm.get(i);
+ans = i;
+}
+}
+return ans;
+}
+}
