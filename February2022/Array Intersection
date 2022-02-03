@@ -17,8 +17,8 @@ public class ArrayIntersection {
 
 		for (int i : arr2) {
 			if (map.containsKey(i) && map.get(i) > 0) {
-				int val = map.get(i);
-				map.put(i, val--);
+				int val = map.get(i) - 1;
+				map.put(i, val);
 				list.add(i);
 			} 
 		}
