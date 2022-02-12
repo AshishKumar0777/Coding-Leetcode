@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class BarChart {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		
+		int n = scn.nextInt();
+		int[] nums = new int[n];
+		
+		for(int i = 0; i < nums.length; i++) {
+			nums[i] = scn.nextInt();
+		}
+		int max = nums[0];
+		
+		for(int i = 1; i < nums.length; i++) {
+			max = Math.max(max, nums[i]);
+		}
+		
+		System.out.println(max);
+		
+		for(int floor = max; floor > 0; floor--) {
+			for(int i = 0; i < nums.length; i++) {
+				if(nums[i] >= floor) {
+					System.out.print("*\t");
+				}else {
+					System.out.print("\t");
+				}
+			}
+			System.out.println();
+		}
+		scn.close();
+	}
+}
+Output : 
+      		    *			
+      		    *			
+      		    *			
+          *		*			
+          *		*	*	*	
+          *	*	*	*	*	
