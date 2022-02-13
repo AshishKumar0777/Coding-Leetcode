@@ -17,8 +17,6 @@ public class BarChart {
 			max = Math.max(max, nums[i]);
 		}
 		
-		System.out.println(max);
-		
 		for(int floor = max; floor > 0; floor--) {
 			for(int i = 0; i < nums.length; i++) {
 				if(nums[i] >= floor) {
@@ -33,9 +31,9 @@ public class BarChart {
 	}
 }
 Output : 
-      		    *			
-      		    *			
-      		    *			
+      		        *			
+      		        *			
+      		        *			
           *		*			
           *		*	*	*	
           *	*	*	*	*	
