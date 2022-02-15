@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class CountZeroes {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		
+		int count = countZeroes(n);
+		System.out.println(count);
+		scn.close();
+	}
+
+	public static int countZeroes(int input) {
+		if(input < 10) {
+			if(input == 0) {
+				return 1;
+			}else {
+				return 0;
+			}
+		}
+		
+		if(input % 10 == 0) {
+			return countZeroes(input / 10) + 1;
+		}else {
+			return countZeroes(input / 10);
+		}
+	}
+}
