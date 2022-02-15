@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class MultiplyUsingRecursion {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int n = scn.nextInt();
+		int m = scn.nextInt();
+		
+		int ans = mul(n, m);
+		System.out.println(ans);
+		scn.close();
+	}
+
+	public static int mul(int n, int m) {
+		if(n == 0 || m == 0) {
+			return 0;
+		}
+		
+		int ans = n + mul(n, m - 1);
+		return ans;
+	}
+}
