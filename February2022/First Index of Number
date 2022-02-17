@@ -1,0 +1,20 @@
+public class FirstIndexNumber {
+
+	public static int firstIndex(int[] arr, int startIndex, int x) {
+		if(startIndex == arr.length) {
+			return -1;
+		}
+		
+		if(arr[startIndex] == x) {
+			return startIndex;
+		}
+		
+		return firstIndex(arr, startIndex + 1, x);
+	}
+	
+	public static void main(String[] args) {
+		int[] arr = {3, 8, 9, 8, 6};
+		System.out.println(firstIndex(arr, 0, 7));
+	}
+
+}
