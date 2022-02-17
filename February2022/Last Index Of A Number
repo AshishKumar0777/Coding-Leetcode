@@ -1,0 +1,26 @@
+public class LastIndexNumber {
+
+	public static int lastIndex(int[] arr, int startIndex, int x) {
+		if(startIndex == arr.length) {
+			return -1;
+		}
+		
+		int smallAns = lastIndex(arr, startIndex + 1, x);
+		
+		if(smallAns != -1) {
+			return smallAns;
+		}
+		
+		if(arr[startIndex] == x) {
+			return startIndex;
+		}else {
+			return -1;
+		}
+	}
+	
+	public static void main(String[] args) {
+		int[] arr = {9, 8, 10, 8};
+		System.out.println(lastIndex(arr, 0, 8));
+	}
+
+}
