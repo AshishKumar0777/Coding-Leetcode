@@ -1,0 +1,18 @@
+public class FibonacciDemo {
+
+	public static int fib(int n) {
+		if(n <= 1) {
+			return n;
+		}
+		
+		int assumption1 = fib(n - 1);
+		int assumption2 = fib(n - 2);
+		
+		return assumption1 + assumption2;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(fib(4));
+	}
+
+}
