@@ -1,0 +1,27 @@
+Example 1:
+Input: num = 33
+Output: [10,11,12]
+Explanation: 33 can be expressed as 10 + 11 + 12 = 33.
+10, 11, 12 are 3 consecutive integers, so we return [10, 11, 12].
+
+Example 2:
+Input: num = 4
+Output: []
+Explanation: There is no way to express 4 as the sum of 3 consecutive integers.
+
+class Solution {
+    public long[] sumOfThree(long num) {
+        long t = num / 3;
+        long[] n = new long[3];
+        
+        if((t - 1) + t + (t + 1) == num){
+            n[0] = t - 1;
+            n[1] = t;
+            n[2] = t + 1;
+        }else{
+            return new long[0];
+        }
+        
+        return n;
+    }
+}
