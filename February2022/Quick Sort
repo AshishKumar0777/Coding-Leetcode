@@ -21,23 +21,23 @@ public class QuickSort {
 	
 	private static int partition(int[] input, int si, int ei) {
 		int count = 0, x = si, y = ei;
-		int temp = input[x];
+		int pivot = input[x];
 		
 		for(int i = si; i <= ei; i++) {
-			if(input[i] < temp) {
+			if(input[i] < pivot) {
 				count++;
 			}
 		}
 		
-		int ans = si + count;
-		input[si] = input[si + count];
-		input[si + count] = temp;
+		int pI = si + count;
+		input[si] = input[pI];
+		input[pI] = temp;
 		
 		while(x < y) {
-			if(input[x] <= input[ans]) {
+			if(input[x] <= input[pI]) {
 				x++;
 			}else {
-				if(input[y] < input[ans]) {
+				if(input[y] < input[pI]) {
 					int temp1 = input[x];
 					input[x] = input[y];
 					input[y] = temp1;
@@ -49,6 +49,6 @@ public class QuickSort {
 			}
 		}
 		
-		return ans;
+		return pI;
 	}
 }
