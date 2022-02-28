@@ -47,3 +47,25 @@ class Solution {
         return count;
     }
 }
+
+class Solution {
+    public int minSteps(String s, String t) {
+        int[] freq1 = new int[26];
+        int count = 0;
+        
+        for(int i = 0; i < s.length(); i++){
+            int index = s.charAt(i) - 'a';
+            freq1[index]++;
+        }
+        
+        for(int i = 0; i < t.length(); i++){
+            int index = t.charAt(i) - 'a';
+            freq1[index]--;
+        }
+        
+        for(int x : freq1){
+            count += Math.abs(x);
+        }
+        return count;
+    }
+}
