@@ -1,0 +1,54 @@
+public class QuickSort {
+
+	public static void main(String[] args) {
+		int[] input = {1, 5, 2, 7, 3};
+		quickSort(input, 0, input.length - 1);
+		
+		for(int x : input) {
+			System.out.print(x + " ");
+		}
+	}
+
+	private static void quickSort(int[] input, int si, int ei) {
+		if(si >= ei) {
+			return;
+		}
+		
+		int pi = partition(input, si, ei);
+		quickSort(input, si, pi - 1);
+		quickSort(input, pi + 1, ei);
+	}
+	
+	private static int partition(int[] input, int si, int ei) {
+		int count = 0, x = si, y = ei;
+		int temp = input[x];
+		
+		for(int i = si; i <= ei; i++) {
+			if(input[i] < temp) {
+				count++;
+			}
+		}
+		
+		int ans = si + count;
+		input[si] = input[si + count];
+		input[si + count] = temp;
+		
+		while(x < y) {
+			if(input[x] <= input[ans]) {
+				x++;
+			}else {
+				if(input[y] < input[ans]) {
+					int temp1 = input[x];
+					input[x] = input[y];
+					input[y] = temp1;
+					x++;
+					y--;
+				}else {
+					y--;
+				}
+			}
+		}
+		
+		return ans;
+	}
+}
