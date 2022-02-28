@@ -1,0 +1,26 @@
+public class PairStar {
+
+	public static void main(String[] args) {
+
+		String s = "aaaa";
+		System.out.println(pairStar(s));
+	}
+
+	public static String pairStar(String s) {
+		if(s.length() <= 1) {
+			return s;
+		}
+		
+		String ans = "";
+		String small = pairStar(s.substring(1));
+		if(s.charAt(0) == small.charAt(0)) {
+			ans = ans + s.charAt(0) + "*" + small;
+		}else {
+			ans = s.charAt(0) + small;
+		}
+		
+		return ans;
+	}
+}
+
+Output : a*a*a*a
