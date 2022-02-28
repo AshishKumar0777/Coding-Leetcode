@@ -1,0 +1,27 @@
+package com.recursion;
+
+public class ReplacePi {
+
+	public static void main(String[] args) {
+		String s = "pip";
+		System.out.println(replacePi(s));
+	}
+
+	public static String replacePi(String s) {
+		if(s.length() <= 1) {
+			return s;
+		}
+		
+		String ans;
+		
+		String small = replacePi(s.substring(1));
+		if(s.charAt(0) == 'p' && small.charAt(0) == 'i') {
+			ans = "3.14" + small.substring(1);
+		}else {
+			ans = s.charAt(0) + small;
+		}
+		return ans;
+	}
+}
+
+Output : 3.14p
