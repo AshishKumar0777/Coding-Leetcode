@@ -15,9 +15,42 @@ Explanation: Reverse num to get 0, then reverse 0 to get 0, which equals num.
 
 class Solution {
     public boolean isSameAfterReversals(int num) {
+    /*
         if(num % 10 == 0 && num != 0){
             return false;
         }
         return true;
+        */
+        
+        if(num == 0) return true;
+        
+        if(num % 10 == 0){
+            return false;
+        }
+        
+        if(countDigits(num) == countDigits(reverseNumber(num))){
+            return true;
+        }
+        return false;
+    }
+    
+    private int countDigits(int num){
+        int count = 0;
+        
+        while(num != 0){
+            count++;
+            num = num / 10;
+        }
+        return count;
+    }
+    
+    private int reverseNumber(int num){
+        int ans = 0;
+        
+        while(num != 0){
+            ans = ans * 10 + num % 10;
+            num = num / 10;
+        }
+        return ans;
     }
 }
