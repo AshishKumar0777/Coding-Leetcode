@@ -1,0 +1,40 @@
+Example 1:
+Input: s = "iloveleetcode", words = ["i","love","leetcode","apples"]
+Output: true
+Explanation:
+s can be made by concatenating "i", "love", and "leetcode" together.
+
+Example 2:
+Input: s = "iloveleetcode", words = ["apples","i","love","leetcode"]
+Output: false
+Explanation:
+It is impossible to make s using a prefix of arr.
+
+class Solution {
+    public boolean isPrefixString(String s, String[] words) {
+        /*
+        String ans = "";
+        // boolean result = true;
+        
+        for(String word : words){
+            ans = ans + word;
+        
+        if(ans.equals(s)){
+            return true;
+        }        
+        }
+        return false;
+        */
+        
+        int start = 0;
+        
+        for(String word : words){
+            if(!s.substring(start, Math.min(s.length(), start + word.length())).equals(word)){
+                return false;
+            }
+               start += word.length();
+               if(start >= s.length()) return true;
+        }
+               return start == s.length();
+    }
+}
