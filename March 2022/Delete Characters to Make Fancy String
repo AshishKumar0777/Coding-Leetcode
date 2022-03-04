@@ -1,0 +1,47 @@
+Example 1:
+Input: s = "leeetcode"
+Output: "leetcode"
+Explanation:
+Remove an 'e' from the first group of 'e's to create "leetcode".
+No three consecutive characters are equal, so return "leetcode".
+
+Example 2:
+Input: s = "aaabaaaa"
+Output: "aabaa"
+Explanation:
+Remove an 'a' from the first group of 'a's to create "aabaaaa".
+Remove two 'a's from the second group of 'a's to create "aabaa".
+No three consecutive characters are equal, so return "aabaa".
+
+Example 3:
+Input: s = "aab"
+Output: "aab"
+Explanation: No three consecutive characters are equal, so return "aab".
+
+class Solution {
+    public String makeFancyString(String s) {
+        int n = s.length();
+        StringBuilder sb = new StringBuilder(s);
+        
+        String ans = s;
+        
+        if(n < 3){
+            return s;
+        }else{
+            int i = 0;
+            for(; i < sb.length() - 2; ){
+                char a = sb.charAt(i);
+                char b = sb.charAt(i + 1);
+                char c = sb.charAt(i + 2);
+                
+                if( a == b && b == c && c == a){
+                    sb.deleteCharAt(i);
+                    i = i;
+            }else{
+                    i++;
+                }
+        }
+        }
+        return sb.toString();
+    }
+}
