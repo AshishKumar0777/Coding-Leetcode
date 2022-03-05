@@ -1,0 +1,74 @@
+Example 1:
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
+Example 2:
+Input: digits = ""
+Output: []
+
+Example 3:
+Input: digits = "2"
+Output: ["a","b","c"]
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        if(digits.length() == 0){
+            return new LinkedList<>();
+        }
+        
+        List<String> ans = getResult(digits);
+        return ans;
+    }
+    
+    private List<String> getResult(String digits){
+        if(digits.length() == 0){
+            List<String> ans = new LinkedList<>();
+            ans.add("");
+            return ans;
+        }
+        
+        char ch = digits.charAt(0);
+        
+        List<String> smallAns= getResult(digits.substring(1));
+        
+        String sa = helper(Character.getNumericValue(ch));
+        
+        List<String> ans = new LinkedList<>();
+        
+        for(int i = 0; i < sa.length(); i++){
+            for(int j = 0; j < smallAns.size(); j++){
+                ans.add(sa.charAt(i) + smallAns.get(j));
+            }
+        }
+        return ans;
+    }
+    
+    private String helper(int n){
+        String s="";
+		if(n==2)
+           s= "abc";
+  
+        if(n==3)
+        	s= "def";
+      
+        if(n==4)
+        	s= "ghi";
+       
+        if(n==5)
+        	s= "jkl";
+       
+        if(n==6)
+        	s= "mno";
+         
+        if(n==7)
+            s= "pqrs";
+  
+        if(n==8)
+             s= "tuv";
+     
+        if(n==9)
+             s= "wxyz";
+      
+        return s;
+    }
+}
