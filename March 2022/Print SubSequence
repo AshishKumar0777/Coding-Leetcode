@@ -1,0 +1,25 @@
+package com.recursion;
+
+public class PrintSubSequence {
+
+	private static void printSubsequence(String s, String outputSoFar) {
+		if(s.length() == 0) {
+			System.out.println(outputSoFar);
+			return;
+		}
+		
+		printSubsequence(s.substring(1), outputSoFar);
+		printSubsequence(s.substring(1), s.charAt(0) + outputSoFar);
+	}
+	
+	private static void printSubsequence(String s) {
+		printSubsequence(s, "");
+	}
+	
+	public static void main(String[] args) {
+		String s = "xyz";
+		
+		printSubsequence(s);
+	}
+
+}
