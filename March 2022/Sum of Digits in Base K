@@ -1,0 +1,36 @@
+Example 1:
+Input: n = 34, k = 6
+Output: 9
+Explanation: 34 (base 10) expressed in base 6 is 54. 5 + 4 = 9.
+
+Example 2:
+Input: n = 10, k = 10
+Output: 1
+Explanation: n is already in base 10. 1 + 0 = 1.
+
+class Solution {
+    public int sumBase(int n, int k) {
+        int numInK = getValueInBase(n, k);
+        
+        int sum = 0;
+        while(numInK > 0){
+            int r = numInK % 10;
+            sum += r;
+            numInK /= 10;
+        }
+        
+        return sum;
+    }
+    
+    public static int getValueInBase(int n, int b){
+       int newNo = 0, i = 0;
+       
+       while(n > 0){
+           int r = n % b;
+           newNo = newNo + r * (int)Math.pow(10, i);
+           n = n / b;
+           i++;
+       }
+       return newNo;
+   }
+}
