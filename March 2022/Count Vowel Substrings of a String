@@ -1,0 +1,49 @@
+Example 1:
+Input: word = "aeiouu"
+Output: 2
+Explanation: The vowel substrings of word are as follows (underlined):
+- "aeiouu"
+- "aeiouu"
+
+Example 2:
+Input: word = "unicornarihan"
+Output: 0
+Explanation: Not all 5 vowels are present, so there are no vowel substrings.
+
+Example 3:
+Input: word = "cuaieuouac"
+Output: 7
+Explanation: The vowel substrings of word are as follows (underlined):
+- "cuaieuouac"
+- "cuaieuouac"
+- "cuaieuouac"
+- "cuaieuouac"
+- "cuaieuouac"
+- "cuaieuouac"
+- "cuaieuouac"
+
+class Solution {
+    public int countVowelSubstrings(String word) {
+        int vow = 0;
+        Set<Character> set = new HashSet<>();
+        int n = word.length();
+        
+        for(int i = 0; i < n - 4; i++){
+            set.clear();
+            int j = i;
+            
+            while(j < n){
+                char ch = word.charAt(j);
+                
+                if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                    set.add(ch);
+                    if(set.size() == 5)
+                        vow++;
+                    j++;
+                }else
+                    break;
+            }
+        }
+        return vow;
+    }
+}
