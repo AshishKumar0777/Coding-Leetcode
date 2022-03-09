@@ -1,0 +1,52 @@
+Example 1:
+Input: head = [1,2,3,3,4,4,5]
+Output: [1,2,5]
+
+Example 2:
+Input: head = [1,1,1,2,3]
+Output: [2,3]
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        
+        ListNode prev = dummy;
+        ListNode cur = head;
+        ListNode next = cur.next;
+        
+        while(next != null){
+           if(cur.val != next.val){ //move normally
+               prev = cur;
+               cur = next;
+               next = cur.next;
+           }else{
+               int val = cur.val;
+               while(cur != null && cur.val == val){
+                   cur = cur.next;
+               }
+               if(cur == null){
+                   prev.next = null;
+                   break;
+               }
+               //it means cur is not null and is a valid node
+               prev.next = cur;
+               next = cur.next;     
+           }
+        }
+        
+        return dummy.next;
+    }
+}
