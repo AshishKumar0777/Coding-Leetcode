@@ -1,0 +1,48 @@
+Example 1:
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+Example 2:
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode rotateRight(ListNode head, int k) {
+        
+    if(head == null || head.next == null) return head;
+        
+        ListNode cur = head;
+        int size = 0;
+        
+        while(cur.next != null){
+            size++;
+            cur = cur.next;
+        }
+        
+        size++;
+        cur.next = head;
+        
+        cur = head;
+        
+        k %= size;
+        
+        while(--size > k){
+            cur = cur.next;
+        }
+        
+        head = cur.next;
+        cur.next = null;
+        
+        return head;
+    }
+}
