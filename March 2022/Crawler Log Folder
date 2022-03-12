@@ -1,0 +1,40 @@
+The operations are described below:
+"../" : Move to the parent folder of the current folder. (If you are already in the main folder, remain in the same folder).
+"./" : Remain in the same folder.
+"x/" : Move to the child folder named x (This folder is guaranteed to always exist).
+
+Example 1:
+Input: logs = ["d1/","d2/","../","d21/","./"]
+Output: 2
+Explanation: Use this change folder operation "../" 2 times and go back to the main folder.
+
+Example 2:
+Input: logs = ["d1/","d2/","./","d3/","../","d31/"]
+Output: 3
+
+Example 3:
+Input: logs = ["d1/","../","../","../"]
+Output: 0
+
+class Solution {
+    public int minOperations(String[] logs) {
+        int level = 0, count = 0;
+        
+        for(String s : logs){
+            if(s.equals("../") && level == 0){
+                count = count + 0;
+                level = level - 0;
+            }else if(s.equals("../") && level > 0){
+                level = level - 1;
+                count = count - 1;
+            }else if(s.equals("./")){
+                count = count + 0;
+                level = level - 0;
+            }else{
+                count = count + 1;
+                level = level + 1;
+            }
+        }
+        return count;
+    }
+}
