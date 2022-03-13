@@ -19,6 +19,7 @@ arr[i] < arr[j] for 1 <= i < j <= arr.length
 
 class Solution {
     public int findKthPositive(int[] arr, int k) {
+    /*
         int[] ans = new int[1001 + k];
         int count = k;
         
@@ -36,5 +37,21 @@ class Solution {
         }
         
         return x;
+        */
+        
+        if(arr[0] > k){
+            return k;
+        }
+        
+        int num = k;
+        
+        for(int a : arr){
+            if(a <= num){
+                num++;
+            }else{
+                break;
+            }
+        }
+        return num;
     }
 }
