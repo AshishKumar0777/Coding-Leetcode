@@ -59,5 +59,26 @@ class Solution {
             max = Math.max(max, count_0 + count_1);
         }
         return max;
+        
+        int sum = 0, left = 0, max = 0;
+        for(int i = 0; i < s.length(); i++){
+            sum += s.charAt(i) - '0';
+        }
+        
+        int right = sum;
+        for(int i = 0; i < s.length() - 1; i++){
+            int t = s.charAt(i) - '0';
+            int temp = sum;            
+            if(temp - t == sum){
+                left++;
+            }else{
+                right--;
+            }
+            
+            int ans = left + right;
+            max = Math.max(ans, max);
+            sum = temp;
+        }
+        return max;
     }
 }
