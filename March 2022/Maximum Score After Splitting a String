@@ -20,6 +20,7 @@ Output: 3
 
 class Solution {
     public int maxScore(String s) {
+    /*
         int sum = 0, left = 0, max = 0;
         for(int i = 0; i < s.length(); i++){
             sum += Integer.parseInt(String.valueOf(s.charAt(i)));
@@ -38,6 +39,24 @@ class Solution {
             int ans = left + right;
             max = Math.max(ans, max);
             sum = temp;
+        }
+        return max;
+        */
+        
+        int count_0 = 0, count_1 = 0, max = 0;
+        
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '1')
+                count_1++;
+        }
+        
+        for(int i = 0; i < s.length() - 1; i++){
+            if(s.charAt(i) == '0'){
+                count_0++;
+            }else{
+                count_1--;
+            }
+            max = Math.max(max, count_0 + count_1);
         }
         return max;
     }
