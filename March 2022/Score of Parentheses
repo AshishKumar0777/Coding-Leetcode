@@ -1,0 +1,41 @@
+Given a balanced parentheses string s, return the score of the string.
+The score of a balanced parentheses string is based on the following rule:
+"()" has score 1.
+AB has score A + B, where A and B are balanced parentheses strings.
+(A) has score 2 * A, where A is a balanced parentheses string.
+
+class Solution {
+    public int scoreOfParentheses(String s) {
+        int l = s.length();
+        int count = 0, res = 0;
+        
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '('){
+                count += 1;
+            }else{
+                count -= 1;
+                if(s.charAt(i - 1) == '(')
+                    res += (int)Math.pow(2, count);
+            }
+        }
+        return res;
+
+        Stack<Character> st = new Stack<>();
+        int count = 0 , res = 0;
+        
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '('){
+                st.push('(');
+                count++;
+            }else{
+                if(!st.isEmpty() && st.peek() == '('){
+                    --count;
+                    if(s.charAt(i - 1) == '(')
+                    res += (int)(Math.pow(2, count));
+                    st.pop();
+                }
+            }
+        }
+        return res;
+    }
+}
