@@ -33,5 +33,18 @@ class Solution {
             }
         }
         return units;
+        
+        Arrays.sort(boxTypes, (a,b) -> b[1] - a[1]);
+        int units = 0;
+        for(int[] box : boxTypes){
+            if(box[0] <= truckSize){
+                units += box[0] * box[1];
+                truckSize -= box[0];
+            }else{
+                units += truckSize * box[1];
+                return units;
+            }
+        }
+        return units;
     }
 }
