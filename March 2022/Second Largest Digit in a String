@@ -1,0 +1,48 @@
+Given an alphanumeric string s, return the second largest numerical digit that appears in s, or -1 if it does not exist.
+An alphanumeric string is a string consisting of lowercase English letters and digits. 
+
+Example 1:
+Input: s = "dfa12321afd"
+Output: 2
+Explanation: The digits that appear in s are [1, 2, 3]. The second largest digit is 2.
+
+Example 2:
+Input: s = "abc1111"
+Output: -1
+Explanation: The digits that appear in s are [1]. There is no second largest digit.
+
+class Solution {
+    public int secondHighest(String s) {
+        TreeSet<Integer> set = new TreeSet<>();        
+        for(int i = 0; i < s.length(); i++){
+            char val = s.charAt(i);
+            if(Character.isDigit(val)){
+                int x = val - '0';
+                set.add(x);
+            }
+        }
+        if(set.size() <= 1){
+            return -1;
+        }else{
+            int[] arr = new int[set.size()];
+            int k = 0;
+            for(int a : set){
+                arr[k] = a;
+                k++;
+            }
+            return arr[arr.length - 2];
+        }
+        
+        int k=2;
+        for(char i='9';i>='0';i--)
+        {
+            System.out.println(i);
+            if(s.indexOf(i)>-1)
+                k--;
+            System.out.println(k);
+            if(k==0)
+                return i-'0';
+        }
+        return -1;
+    }
+}
