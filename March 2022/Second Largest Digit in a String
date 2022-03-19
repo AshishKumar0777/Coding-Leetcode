@@ -36,10 +36,8 @@ class Solution {
         int k=2;
         for(char i='9';i>='0';i--)
         {
-            System.out.println(i);
             if(s.indexOf(i)>-1)
                 k--;
-            System.out.println(k);
             if(k==0)
                 return i-'0';
         }
