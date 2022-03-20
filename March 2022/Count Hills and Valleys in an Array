@@ -42,5 +42,27 @@ class Solution {
             }
         }
         return count;
+        
+        List<Integer> list = new ArrayList<>();
+        int count = 0;
+        
+        for(int i = 0; i < nums.length - 1; i++){
+            if(nums[i] > nums[i+1])
+                list.add(nums[i]);
+            else if(nums[i + 1] > nums[i]){
+                list.add(nums[i]);
+            }else{
+                
+            }
+        }
+        list.add(nums[nums.length - 1]);
+        
+        for(int i = 1; i < list.size() - 1; i++){
+            if(list.get(i) > list.get(i-1) && list.get(i) > list.get(i+1))
+                count++;
+            else if(list.get(i) < list.get(i-1) && list.get(i) < list.get(i+1))
+                count++;
+        }
+        return count;
     }
 }
