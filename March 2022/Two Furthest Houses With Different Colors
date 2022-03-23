@@ -62,5 +62,24 @@ class Solution {
             }
         }
         return res;
+        
+        int max = 0, min = 0;
+        int i = 0, k = colors.length - 1;
+        for(int j = 0; j < colors.length; j++){
+            if(colors[i] != colors[j]){
+                max = Math.abs(i - j);
+            }
+        }
+        
+        for(int j = 0; j < colors.length; j++){
+            if(colors[k] != colors[j]){
+                min = Math.abs(j - k);
+                break;
+            }
+        }
+        if(max > min)
+            return max;
+        else
+            return min;
     }
 }
