@@ -31,6 +31,9 @@ Double again so x = 10
 
 class Solution {
     public int minMoves(int target, int maxDoubles) {
+        class Solution {
+    public int minMoves(int target, int maxDoubles) {
+        /*
         if(target <= 1 || maxDoubles == 0) return (int)Math.abs(target - 1);
         
         if(target % 2 == 0){
@@ -39,5 +42,30 @@ class Solution {
         }else{
             return 1 + minMoves(target - 1, maxDoubles);
         }
+        */
+        
+        int count = 0;
+        if(target == 1){
+            return 0;
+        }
+        while(maxDoubles >  0){
+            if(target % 2 != 0){
+                count++;
+                target--;
+                if(target <= 1){
+                    break;
+                }
+            }
+            else{
+                target /= 2;
+                count++;
+                maxDoubles--;
+                 if(target <= 1){
+                    break;
+                }
+            }
+        }
+     int ans = target - 1 + count;
+        return ans;
     }
 }
