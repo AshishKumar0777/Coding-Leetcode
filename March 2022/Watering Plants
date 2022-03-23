@@ -46,8 +46,8 @@ class Solution {
                 tempCapacity -= plants[i];
             }else{
                 tempCapacity = capacity-plants[i];
-                ans += (i*2);
-                ans++;
+                ans += (i*2); //This is for the ith plant.
+                ans++; //Taking one more step to reach the river.
             }
         }
         return ans;
