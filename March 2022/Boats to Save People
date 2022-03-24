@@ -21,7 +21,7 @@ Explanation: 4 boats (3), (3), (4), (5)
 class Solution {
     public int numRescueBoats(int[] people, int limit) {
         Arrays.sort(people);
-        
+        /*
         int start = 0, end = people.length - 1, ans = 0;
         while(end>=start){
             if(people[start] + people[end] <= limit){
@@ -30,6 +30,18 @@ class Solution {
                 ans++;
                 end--;
         }
+        return ans;
+        */
+        int i = 0, j = people.length - 1;
+        int ans = 0;
+
+        while (i <= j) {
+            ans++;
+            if (people[i] + people[j] <= limit)
+                i++;
+            j--;
+        }
+
         return ans;
     }
 }
