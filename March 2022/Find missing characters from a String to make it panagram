@@ -1,0 +1,25 @@
+
+public class Test {
+
+	public static void main(String[] args) {
+
+		int[] freq = new int[26];
+		String s = "The quick brown fox jumps";
+		s = s.replace(" ", "").toLowerCase();
+		
+		int i = 0;
+		while(i < s.length()) {
+			int index = s.charAt(i) - 'a';
+			freq[index]++;
+			i++;			
+		}
+		StringBuilder ans = new StringBuilder();
+		for(int j = 0; j < 26; j++) {
+			if(freq[j] == 0) {
+				char x = (char)(j + 'a');
+				ans.append(x);
+			}
+		}
+		System.out.println(ans);
+	}
+}
