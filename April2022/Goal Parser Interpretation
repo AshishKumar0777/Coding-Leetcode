@@ -1,0 +1,63 @@
+You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret 
+"G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
+Given the string command, return the Goal Parser's interpretation of command. 
+
+Example 1:
+Input: command = "G()(al)"
+Output: "Goal"
+Explanation: The Goal Parser interprets the command as follows:
+G -> G
+() -> o
+(al) -> al
+The final concatenated result is "Goal".
+
+Example 2:
+Input: command = "G()()()()(al)"
+Output: "Gooooal"
+
+Example 3:
+Input: command = "(al)G(al)()()G"
+Output: "alGalooG"
+
+class Solution {
+    public String interpret(String command) {
+        /*
+        int i = 0;
+        String ans = "";
+        
+        while(i < s.length()){
+            if(s.charAt(i) == 'G'){
+                ans = ans + 'G';
+                i++;
+            }else if(s.charAt(i) == '(' && s.charAt(i+1) == ')'){
+                ans = ans + 'o';
+                i = i+2;
+            }else{
+                ans = ans + "al";
+                i = i+4;
+            }
+        }
+        return ans;
+        
+        String ans = "";
+        for(int i=0;i<command.length();i++){
+            char ch = command.charAt(i);
+              if(ch == 'G'){
+                ans += "G";
+          }else if(ch == ')'){
+                ans+= "o";
+            }else if(ch == 'a'){
+                ans += "al";
+                i = i+2;
+              }
+        }
+        return ans;
+    
+        
+        String finalString = command.replace("G","G").replace("()", "o").replace("(al)", "al");
+return finalString;
+*/
+        
+        return command.replace("()", "o").replace("(al)", "al");
+    }
+}
