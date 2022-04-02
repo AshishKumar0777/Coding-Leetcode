@@ -1,0 +1,76 @@
+You are given a string s formed by digits and '#'. We want to map s to English lowercase characters as follows:
+Characters ('a' to 'i') are represented by ('1' to '9') respectively.
+Characters ('j' to 'z') are represented by ('10#' to '26#') respectively.
+Return the string formed after mapping.
+The test cases are generated so that a unique mapping will always exist. 
+
+Example 1:
+Input: s = "10#11#12"
+Output: "jkab"
+Explanation: "j" -> "10#" , "k" -> "11#" , "a" -> "1" , "b" -> "2".
+
+Example 2:
+Input: s = "1326#"
+Output: "acz"
+
+class Solution {
+    public String freqAlphabets(String s) {
+        /*
+        HashMap<Integer, Character> map = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 0; i < 26; i++){
+            char ch = (char)('a'+ i);
+            map.put(i+1, ch);
+        }
+        
+        int j = 0;
+        // String ans = "";
+        while(j < s.length()){
+            if(j+2 < s.length() && s.charAt(j+2) == '#'){
+                int value = Integer.parseInt(s.substring(j, j+2));
+                sb.append(map.get(value));
+                j = j+3;
+            }else{
+                //int value = Integer.parseInt(s.substring(j, j+1));
+                int value = s.charAt(j) - '0';
+                sb.append(map.get(value));
+                j++;
+            }
+        }
+        return sb.toString();
+        */
+        
+        StringBuilder sb = new StringBuilder();
+        int n = s.length();
+        
+        for(int i=0;i<s.length();i++) {
+            
+            char c = s.charAt(i);
+			
+            // Checking whether the (i+2)th position is < n and it is '#'
+            if((i+2 < n) && s.charAt(i+2) == '#') {
+			
+                //Converting character to int
+                int first = (int)(s.charAt(i) - '0');
+                int second = (int)(s.charAt(i+1) - '0');
+				
+                //Combining first and second value to a single two digit number
+                //So multiplying first digit with 10.
+                int combined = (first * 10) + second;
+                char combinedChar = (char)('a' + (combined-1));
+				
+                sb.append(combinedChar);
+				
+                //Incrementing by 2 positions as we handled before
+                i += 2;
+            } else {
+			
+                //Handling single digits
+                int first = (int)(s.charAt(i) - '0');
+                sb.append((char)('a' + (first-1)));
+            }
+        }
+        return sb.toString();
+    }
+}
