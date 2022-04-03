@@ -50,3 +50,52 @@ class Solution {
         return ops;
     }
 }
+
+class Solution {
+    /*
+    public int convertTime(String current, String correct) {
+        int cth = Integer.parseInt(current.substring(0,2))*60;
+        int ctm = Integer.parseInt(current.substring(3));
+        int coth = Integer.parseInt(correct.substring(0,2))*60;
+        int cotm = Integer.parseInt(correct.substring(3));
+        
+        int tc = cth + ctm;
+        int tco = coth + cotm;
+        
+        int ops = 0;
+        
+        int diff = Math.abs(tco-tc);
+        
+        while(diff > 0){
+            if(diff < 5 && diff >= 1){
+                ops += diff % 5;
+                diff = diff / 5;
+            }else if(diff < 15 && diff >= 5){
+                ops += diff / 5;
+                diff = diff % 5;
+            }else if(diff < 60 && diff >= 15){
+                ops += diff / 15;
+                diff = diff % 15;
+            }else{
+                ops++;
+                diff = diff - 60;
+            }
+        }
+        return ops;
+    }
+    */
+     private int getIntTime(String t){
+        String h = t.substring(0, 2);
+        String m = t.substring(3);
+        return Integer.parseInt(h) * 60 + Integer.parseInt(m);
+    }
+    public int convertTime(String current, String correct) {
+        int []incs = {60, 15, 5, 1};
+        int ops = 0, curr = getIntTime(current), corr = getIntTime(correct), diff = corr - curr;
+        for(var inc : incs){
+            ops += diff/inc;
+            diff %= inc;
+        }
+        return ops;
+    }
+}
