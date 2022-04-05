@@ -1,0 +1,111 @@
+Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+If target is not found in the array, return [-1, -1].
+You must write an algorithm with O(log n) runtime complexity. 
+
+Example 1:
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+
+Example 2:
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+
+Example 3:
+Input: nums = [], target = 0
+Output: [-1,-1]
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        /*
+        int[] ans = new int[2];
+        
+        int startIndex = -1;
+        int endIndex = -1;
+        
+        int start = 0;
+        int end = nums.length-1;
+        
+        while(start <= end){
+            int mid = start+(end-start)/2;
+            if(nums[mid] == target){
+                startIndex = mid;
+                endIndex = mid;
+                int temp1 = mid+1;
+                int temp2 = mid-1;
+                while(temp1 < nums.length){
+                    if(nums[temp1] == target){
+                        endIndex = temp1;
+                        temp1=temp1+1;
+                    }else{
+                        break;
+                    }
+                }
+                
+                while(temp2 >= 0){
+                    if(nums[temp2] == target){
+                        startIndex = temp2;
+                        temp2=temp2-1;
+                    }else{
+                        break;
+                    }
+                }
+            }else if(nums[mid] > target){
+                end = mid - 1;
+            }else{
+                start = mid + 1;
+            }
+        }
+        ans[0] = startIndex;
+        ans[1] = endIndex;
+        return ans;
+        */
+        
+        int defaultValue[] = {-1,-1};
+        if ( nums.length == 0)
+            return defaultValue;
+        
+        int lastIndex=0; 
+        int firstIndex =0;
+        
+        // finding last index
+        lastIndex = binarySearch( nums,0, nums.length-1,target,false); 
+        
+        if ( lastIndex != -1)
+             firstIndex = binarySearch( nums,0, nums.length-1,target,true); 
+        else
+            return defaultValue;
+        
+        
+        return new int[]{firstIndex,lastIndex};
+
+          
+    }
+    
+    
+    //doing binary search
+    public int binarySearch(int[] nums, int start,int end ,int target, boolean findFirstIndex) {
+        
+        //default index
+        int keyIndex = -1;
+        
+        while ( start <= end ) {
+            int mid = start + (end-start)/2;
+            
+            // if we find target, based on boolean flag, adjust left and right pointer
+            if ( nums[mid] == target) {
+                keyIndex = mid;
+                
+                if ( findFirstIndex) 
+                    end = mid-1;
+                else
+                    start = mid+1;
+               }
+            else if ( nums[mid] > target) 
+                end = mid-1;
+            else
+                start = mid+1;
+            
+          }
+        return keyIndex;
+    }
+}
