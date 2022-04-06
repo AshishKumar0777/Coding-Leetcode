@@ -1,0 +1,72 @@
+You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more 
+integers have the same number of 1's you have to sort them in ascending order.
+Return the array after sorting it. 
+
+Example 1:
+Input: arr = [0,1,2,3,4,5,6,7,8]
+Output: [0,1,2,4,8,3,5,6,7]
+Explantion: [0] is the only integer with 0 bits.
+[1,2,4,8] all have 1 bit.
+[3,5,6] have 2 bits.
+[7] has 3 bits.
+The sorted array by bits is [0,1,2,4,8,3,5,6,7]
+
+Example 2:
+Input: arr = [1024,512,256,128,64,32,16,8,4,2,1]
+Output: [1,2,4,8,16,32,64,128,256,512,1024]
+Explantion: All integers have 1 bit in the binary representation, you should just sort them in ascending order.
+
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        /*
+        final Integer[] tmp = new Integer[arr.length];
+        for (int i=0; i<arr.length; i++) {
+            tmp[i] = arr[i];
+        }
+        Arrays.sort(tmp, Comparator.comparingInt(x -> (Integer.bitCount(x) << 16) + x));
+        for (int i=0; i<arr.length; i++) {
+            arr[i] = tmp[i];
+        }
+        return arr;
+        */
+        int temp_array[]= new int[arr.length];
+
+   for(int i=0;i<arr.length;i++)
+   {    int count=0;  
+      for(int j=0;j<=31;j++)
+    {
+        if(((arr[i]>>j)&1)==1)
+        count=count+1;
+        
+    }
+    
+        
+        temp_array[i]=count;
+    }
+        
+        
+
+    // to sort using bubble sort
+    int temp=0;
+    for(int i=0;i<arr.length;i++)
+    {
+         
+        for(int j=0;j<arr.length-i-1;j++)
+        {
+            if(temp_array[j+1]<temp_array[j] || temp_array[j+1]==temp_array[j] && arr[j+1]<arr[j])
+            {
+                temp=temp_array[j+1];
+                temp_array[j+1]=temp_array[j];
+                temp_array[j]=temp;
+                
+                temp=arr[j+1];
+                arr[j+1]=arr[j];
+                arr[j]=temp;
+                }
+        }
+       
+    }
+    
+    return arr;
+    }
+}
