@@ -40,5 +40,24 @@ class Solution {
         }
         int index = number.lastIndexOf(digit);
         return number.substring(0, index)+number.substring(index+1);
+        
+        List<String> hs=new ArrayList<>();
+ 
+    for(int i=0;i<number.length();i++)
+    { 
+           StringBuilder sb=new StringBuilder();
+        if(number.charAt(i)==digit)
+        {
+            if(i==0)
+                hs.add(sb.append(number.substring(1)).toString());
+            else if(i==number.length()-1)
+                hs.add(sb.append(number.substring(0,i)).toString());
+           else
+                  hs.add(sb.append(number.substring(0,i)+number.substring(i+1)).toString());      
+        }
+    }
+    Collections.sort(hs,Collections.reverseOrder());
+   
+   return hs.get(0);
     }
 }
