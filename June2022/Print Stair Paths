@@ -1,0 +1,25 @@
+package com.recursion;
+
+public class PrintStairCasePath {
+
+	public static void main(String[] args) {
+
+		printStairCasePath(4, "");
+	}
+	
+	public static void printStairCasePath(int n, String path) {
+		if(n == 0) {
+			System.out.println(path);
+			return;
+		}
+		
+		if(n < 0) {
+			return;
+		}
+		
+		printStairCasePath(n - 1, path + "1");
+		printStairCasePath(n - 2, path + "2");
+		printStairCasePath(n - 3, path + "3");
+	}
+
+}
