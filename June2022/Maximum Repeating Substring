@@ -24,6 +24,7 @@ sequence and word contains only lowercase English letters.
 
 class Solution {
     public int maxRepeating(String sequence, String word) {
+    /*
         int result = 0;
         String original = word;
         while(sequence.contains(word))
@@ -32,5 +33,22 @@ class Solution {
             word = word+original;
         }
         return result;
+        */
+        
+        int beg = 0;
+        int count = 0;
+        String wordToFind = word;
+        
+        while(true){
+            int wordbeg = sequence.substring(beg).indexOf(wordToFind);
+            
+            if(wordbeg == -1){
+                return count;
+            }else{
+                count++;
+                wordToFind += word;
+                beg = wordbeg;
+            }
+        }
     }
 }
