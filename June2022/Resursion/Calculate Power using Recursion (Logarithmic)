@@ -1,0 +1,21 @@
+//Using Logarithmic Approach to reduce Time Complexity.
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(power(2, 8));
+    }
+    
+    private static int power(int base, int p){
+        if(p == 0){
+            return 1;
+        }
+        
+        int xn = power(base, p / 2) * power(base, p / 2);
+        
+        if(p % 2 == 1){
+            xn = xn * base;
+        }
+        
+        return xn;
+    }
+} 
