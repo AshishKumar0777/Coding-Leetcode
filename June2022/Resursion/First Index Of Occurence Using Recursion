@@ -16,4 +16,17 @@ class HelloWorld {
             return fiisa;
         }
     }
+    
+    private static int firstOccurenceOfANumber(int[] arr, int index, int data){
+        if(index == arr.length){
+            return -1;
+        }
+        
+        if(arr[index] == data){
+            return index;
+        }else{
+            int fiisa = firstOccurenceOfANumber(arr, index + 1,data);
+            return fiisa;
+        }
+    }
 } 
