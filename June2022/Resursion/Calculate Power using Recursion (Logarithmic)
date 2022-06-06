@@ -18,4 +18,14 @@ class HelloWorld {
         
         return xn;
     }
+    
+    // Higher Time Complexity
+    private static int power(int base, int p){
+        if(p == 0){
+            return 1;
+        }
+        
+        int xn = base * power(base, p - 1);        
+        return xn;
+    }
 } 
