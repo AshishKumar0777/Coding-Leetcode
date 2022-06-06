@@ -1,0 +1,29 @@
+//Print Decreasing Increasing
+
+Output : 5
+         4
+         3
+         2
+         1
+         1
+         2
+         3
+         4
+         5
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
+        printDecreasingIncreasing(5);
+    }
+    
+    private static void printDecreasingIncreasing(int n){
+        if(n == 0){
+            return;
+        }
+        
+        System.out.println(n);
+        printDecreasingIncreasing(n - 1);
+        System.out.println(n);
+    }
+}
