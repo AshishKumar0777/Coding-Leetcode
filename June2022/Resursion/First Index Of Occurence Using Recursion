@@ -1,0 +1,19 @@
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(firstOccurenceOfANumber(new int[]{10, 20, 30, 40, 30, 50}, 0, 30));        
+    }
+    
+    private static int firstOccurenceOfANumber(int[] arr, int index, int data){
+        if(index == arr.length){
+            return -1;
+        }
+        
+        int fiisa = firstOccurenceOfANumber(arr, index + 1,data);
+        
+        if(arr[index] == data){
+            return index;
+        }else{
+            return fiisa;
+        }
+    }
+} 
