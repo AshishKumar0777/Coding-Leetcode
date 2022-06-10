@@ -1,0 +1,30 @@
+import java.util.*;
+class HelloWorld {
+    static String[] codes = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wx", "yz"};
+    
+    public static void main(String[] args) {
+         Scanner scn = new Scanner(System.in);
+         String s = scn.next();
+         ArrayList<String> words = getKPC(s);
+         System.out.println(words);
+    }
+    
+    private static ArrayList<String> getKPC(String s){
+        if(s.length() == 0){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }
+        char ch = s.charAt(0);
+        ArrayList<String> rres = getKPC(s.substring(1));
+        ArrayList<String> mres = new ArrayList<>();
+        
+        String str = codes[ch-'0'];
+        for(int i = 0; i < codes[ch-'0'].length(); i++){
+            for(int j = 0; j < rres.size(); j++){
+                mres.add(str.charAt(i) + rres.get(j));
+            }
+        }
+        return mres;
+    }
+}
