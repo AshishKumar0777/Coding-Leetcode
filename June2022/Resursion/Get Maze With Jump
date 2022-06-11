@@ -1,0 +1,57 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        // System.out.println("Hello, World!"); 
+        Scanner scn = new Scanner(System.in);
+        int m = scn.nextInt();
+        int n = scn.nextInt();
+        
+        ArrayList<String> list = getMazePathsWithJump(1, 1, m, n);
+        System.out.println(list);
+    }
+    
+    private static ArrayList<String> getMazePathsWithJump(int sr, int sc, int dr, int dc){
+        
+        if(sr == sr && sc == dc){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }
+        ArrayList<String> paths = new ArrayList<>();
+        
+        //horizontal moves
+        for(int ms = 1; ms <= dc-sc; ms++){
+            ArrayList<String> hpaths = getMazePathsWithJump(sr, sc+ms, dr, dc);
+            for(String hpath : hpaths){
+                paths.add("h" + ms+hpath);
+            }
+        }
+        
+        //vertical moves
+        for(int ms = 1; ms <= dr-sr; ms++){
+            ArrayList<String> vpaths = getMazePathsWithJump(sr+ms, sc, dr, dc);
+            for(String vpath : vpaths){
+                paths.add("v" + ms+vpath);
+            }
+        }
+        
+        //diagonal moves
+        for(int ms = 1; ms <= dr-sr && ms <= dc-sc; ms++){
+            ArrayList<String> dpaths = getMazePathsWithJump(sr+ms, sc, dr, dc);
+            for(String dpath : dpaths){
+                paths.add("d" + ms+dpath);
+            }
+        }
+        
+        return paths;
+    }
+}
+
+Output : 
+        3
+        3
+[h1h1, h1v1h1, h1v1v1h1, h1v1d1h1, h1v2h1, h1d1h1, h1d1v1h1, h1d1d1h1, h2, v1h1h1, v1h1v1h1, v1h1d1h1, v1h2, v1v1h1h1, v1v1h2, v1d1h1h1, v1d1h2, v2h1h1, v2h2, d1h1h1,
+d1h1v1h1, d1h1d1h1, d1h2, d1v1h1h1, d1v1h2, d1d1h1h1, d1d1h2, d2h1h1, d2h2]
