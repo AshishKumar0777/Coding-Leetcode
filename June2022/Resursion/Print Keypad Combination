@@ -1,0 +1,48 @@
+class HelloWorld {
+    static String[] codes = {".,", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwz", "yz"};
+    public static void main(String[] args) {
+        // System.out.println("Hello, World!"); 
+        printKPC("678", "");
+    }
+    
+    private static void printKPC(String ques, String ans){
+        if(ques.length() == 0){
+            System.out.println(ans);
+            return;
+        }
+        
+        char ch = ques.charAt(0);
+        String roq = ques.substring(1);
+        
+        String codefromch = codes[ch - '0'];
+        for(int i = 0; i < codefromch.length(); i++){
+            char cho = codefromch.charAt(i);
+            printKPC(roq, ans + cho);
+        }
+    }
+}
+
+Output : ptv
+         ptw
+         ptz
+         puv
+         puw
+         puz
+         qtv
+         qtw
+         qtz
+         quv
+         quw
+         quz
+         rtv
+         rtw
+         rtz
+         ruv
+         ruw
+         ruz
+         stv
+         stw
+         stz
+         suv
+         suw
+         suz
