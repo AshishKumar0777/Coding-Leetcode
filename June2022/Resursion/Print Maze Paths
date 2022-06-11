@@ -1,0 +1,27 @@
+class HelloWorld {
+    static String[] codes = {".,", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwz", "yz"};
+    public static void main(String[] args) {
+        printMazePaths(1, 1, 3, 3, "");
+    }
+    
+    private static void printMazePaths(int sr, int sc, int dr, int dc, String ans){
+        if(sr == dr && sc == dc){
+            System.out.println(ans);
+            return;
+        }
+        
+        if(sc <= dc){
+        printMazePaths(sr, sc+1, dr, dc, ans + "h");
+        }
+        
+        if(sr <= dr){
+        printMazePaths(sr + 1, sc, dr, dc, ans + "v");
+        }
+    }
+    
+    Output : hhvv
+             hvhv
+             hvvh
+             vhhv
+             vhvh
+             vvhh
