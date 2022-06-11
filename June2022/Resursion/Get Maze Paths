@@ -1,0 +1,44 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        // System.out.println("Hello, World!"); 
+        Scanner scn = new Scanner(System.in);
+        int m = scn.nextInt();
+        int n = scn.nextInt();
+        
+        ArrayList<String> list = getMazePaths(1, 1, m, n);
+        System.out.println(list);
+    }
+    
+    private static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc){
+        
+        if(sr == dr && sc == dc){
+            ArrayList<String> bres = new ArrayList<>();
+            bres.add("");
+            return bres;
+        }
+        ArrayList<String> hpaths = new ArrayList<>();
+        ArrayList<String> vpaths = new ArrayList<>();
+        ArrayList<String> paths = new ArrayList<>();
+        
+        if(sr < dr){
+            vpaths = getMazePaths(sr + 1, sc, dr, dc);
+        }
+        
+        if(sc < dc){
+            hpaths = getMazePaths(sr, sc + 1, dr, dc);
+        }
+        
+        for(String vpath : vpaths){
+            paths.add("v" + vpath);
+        }
+        
+        for(String hpath : hpaths){
+            paths.add("h" + hpath);
+        }
+        
+        return paths;
+    }
+}
+
+Output : [vvhh, vhvh, vhhv, hvvh, hvhv, hhvv]
