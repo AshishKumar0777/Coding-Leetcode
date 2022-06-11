@@ -15,7 +15,7 @@ class HelloWorld {
     
     private static ArrayList<String> getMazePathsWithJump(int sr, int sc, int dr, int dc){
         
-        if(sr == sr && sc == dc){
+        if(sr == dr && sc == dc){
             ArrayList<String> bres = new ArrayList<>();
             bres.add("");
             return bres;
@@ -40,7 +40,7 @@ class HelloWorld {
         
         //diagonal moves
         for(int ms = 1; ms <= dr-sr && ms <= dc-sc; ms++){
-            ArrayList<String> dpaths = getMazePathsWithJump(sr+ms, sc, dr, dc);
+            ArrayList<String> dpaths = getMazePathsWithJump(sr+ms, sc+ms, dr, dc);
             for(String dpath : dpaths){
                 paths.add("d" + ms+dpath);
             }
@@ -50,8 +50,7 @@ class HelloWorld {
     }
 }
 
-Output : 
-        3
-        3
-[h1h1, h1v1h1, h1v1v1h1, h1v1d1h1, h1v2h1, h1d1h1, h1d1v1h1, h1d1d1h1, h2, v1h1h1, v1h1v1h1, v1h1d1h1, v1h2, v1v1h1h1, v1v1h2, v1d1h1h1, v1d1h2, v2h1h1, v2h2, d1h1h1,
-d1h1v1h1, d1h1d1h1, d1h2, d1v1h1h1, d1v1h2, d1d1h1h1, d1d1h2, d2h1h1, d2h2]
+Output : 3
+         3
+         [h1h1v1v1, h1h1v2, h1v1h1v1, h1v1v1h1, h1v1d1, h1v2h1, h1d1v1, h2v1v1, h2v2, v1h1h1v1, v1h1v1h1, v1h1d1, v1h2v1, v1v1h1h1, v1v1h2, v1d1h1, v2h1h1, v2h2,
+         d1h1v1, d1v1h1, d1d1, d2]
