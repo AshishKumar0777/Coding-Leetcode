@@ -1,0 +1,27 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        // System.out.println("Hello, World!"); 
+        Scanner scn = new Scanner(System.in);
+        String word = scn.nextLine();
+        
+        printPermutations(word, "");
+    }
+    
+    private static void printPermutations(String word, String ans){
+        if(word.length() == 0){
+            System.out.println(ans);
+            return;
+        }
+        
+        for(int i = 0; i < word.length(); i++){
+            char ch = word.charAt(i);
+            String qlpart = word.substring(0, i);
+            String qrpart = word.substring(i+1);
+            String ques = qlpart + qrpart;
+            
+            printPermutations(ques, ans + ch);
+        }
+        
+    }
+}
