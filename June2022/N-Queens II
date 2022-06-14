@@ -1,0 +1,83 @@
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+Given an integer n, return the number of distinct solutions to the n-queens puzzle. 
+
+Example 1:
+Input: n = 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown.
+
+Example 2:
+Input: n = 1
+Output: 1 
+
+Constraints:
+1 <= n <= 9
+
+class Solution {
+    public int totalNQueens(int n) {
+        
+        List<List<String>> ans = new ArrayList<>();
+        
+        char[][] chess = new char[n][n];
+        
+        for(int i = 0; i < chess.length; i++){
+            for(int j = 0; j < chess.length; j++){
+                chess[i][j] = '.';
+            }
+        }
+        
+        placeQueens(ans, chess, 0);
+        return ans.size();
+    }
+    
+    private void placeQueens(List<List<String>> ans, char[][] chess, int row){
+        if(row == chess.length){
+            ans.add(build(chess));
+            return;
+        }
+        
+        for(int col = 0; col < chess.length; col++){
+            if(isValid(chess, row, col)){
+                chess[row][col] = 'Q';
+                placeQueens(ans, chess, row + 1);
+                chess[row][col] = '.'; 
+            }
+        }
+    }
+    
+    private boolean isValid(char[][] chess, int row, int col){
+        
+        //Check for queen in the column
+        for(int i = 0; i < row; i++){
+            if(chess[i][col] == 'Q'){
+                return false;
+            }
+        }
+        
+        //Check for queen in the 45 degree
+        for(int i = row - 1, j = col + 1; i >= 0 && j < chess.length; i--, j++){
+            if(chess[i][j] == 'Q'){
+                return false;
+            }
+        }
+        
+        //Check for the queen in the 135 degree
+        for(int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--){
+            if(chess[i][j] == 'Q'){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    private List<String> build(char[][] chess){
+        List<String> paths = new ArrayList<>();
+        
+        for(int i = 0; i < chess.length; i++){
+            paths.add(new String(chess[i]));
+        }
+        
+        return paths;
+    }
+}
