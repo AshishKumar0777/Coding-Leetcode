@@ -86,13 +86,8 @@ class Solution
         
         while(qu.size() > 0){
             Node node = qu.poll();
-            int line = lines.poll();
-            
-            if(!tmap.containsKey(line))
-                tmap.put(line, node.data);
-            else
-                tmap.put(line, node.data);
-                
+            int line = lines.poll();            
+            tmap.put(line, node.data);                
             if(node.left != null){
                 qu.add(node.left); 
                 lines.add(line-1);
