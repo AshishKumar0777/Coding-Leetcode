@@ -1,0 +1,84 @@
+Description
+Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
+If two nodes are in the same row and column, the order should be from left to right.
+For each node at position (row, col), its left and right children will be at positions (row + 1, col - 1) and (row + 1, col + 1) respectively. The root of the tree is at 
+(0, 0).
+
+Example1:
+Inpurt:  {3,9,20,#,#,15,7}
+Output: [[9],[3,15],[20],[7]]
+Explanation:
+   3
+  /\
+ /  \
+ 9  20
+    /\
+   /  \
+  15   7
+  
+Example2:
+Input: {3,9,8,4,0,1,7}
+Output: [[4],[9],[3,0,1],[8],[7]]
+Explanation:
+     3
+    /\
+   /  \
+   9   8
+  /\  /\
+ /  \/  \
+ 4  01   7
+ 
+ /**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+
+public class Solution {
+    /**
+     * @param root: the root of tree
+     * @return: the vertical order traversal
+     */
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        // write your code here
+        List<List<Integer>> res = new ArrayList<>();
+        TreeMap<Integer, List<Integer>> tmap = new TreeMap<>();
+        if(root == null){
+            return res;
+        }
+        levelOrder(root, 0, tmap);
+        res.addAll(tmap.values());
+    }
+
+    void levelOrder(TreeNode root, int idx, TreeMap<Integer, List<Integer>>){
+        Queue<TreeNode> qu = new LinkedList<>();
+        Queue<Integer> lines = new LinkedList<>();
+        qu.offer(root);
+        lines.offer(0);
+
+        while(qu.size() > 0){
+            TreeNode node = qu.pop();
+            int line = lines.pop();
+            if(tmap.containsKey(line)){
+                tmap.put(line, new ArrayList<>());
+            }
+            tmap.get(line).add(node.val);
+
+            if(node.left != null){
+                qu.add(node.left);
+                lines.add(line - 1);
+            }
+
+            if(node.right != null){
+                qu.add(node.right);
+                lines.add(line+1);
+            }
+        }
+    }
+}
