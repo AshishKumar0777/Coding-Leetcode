@@ -1,0 +1,39 @@
+Given an array Arr of size N, print second largest element from an array.
+
+Example 1:
+Input: 
+N = 6
+Arr[] = {12, 35, 1, 10, 34, 1}
+Output: 34
+Explanation: The largest element of the 
+array is 35 and the second largest element
+is 34.
+
+Example 2:
+Input: 
+N = 3
+Arr[] = {10, 5, 10}
+Output: 5
+Explanation: The largest element of 
+the array is 10 and the second 
+largest element is 5.
+
+class Solution {
+    int print2largest(int arr[], int n) {
+        // code here
+        int maxNumber = arr[0];
+        int secondMaxNumber = -1;
+        
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] > maxNumber){
+                int temp = maxNumber;
+                maxNumber = arr[i];
+                secondMaxNumber = temp;
+            }else if(arr[i] > secondMaxNumber && arr[i] != maxNumber){ //arr[i] != maxNumber because here we want to calculate unique digit
+                secondMaxNumber = arr[i];
+            }
+        }
+        
+        return secondMaxNumber;
+    }
+}
