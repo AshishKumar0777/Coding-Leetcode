@@ -41,3 +41,54 @@ public class SortSubarray {
         return ans;
     }
 }
+
+public class SortSubarray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 8, 6, 7, 9, 10, 11};
+        int[] result = findIndicies(arr);
+
+        System.out.println(result[0] + " " + result[1]);
+    }
+
+    private static int[] findIndicies(int[] arr){
+        int n = arr.length;
+
+        int smallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE;
+
+        for(int i = 0; i < n; i++){
+            int x = arr[i];
+            if(outOfOrder(arr, i)){
+                largest = Math.max(largest, x);
+                smallest = Math.min(smallest, x);
+            }
+        }
+        
+        if(smallest == Integer.MAX_VALUE){
+            return new int[]{-1, -1};
+        }
+
+        int left = 0;
+        while(smallest >= arr[left]){
+            left++;
+        }
+
+        int right = n-1;
+        while(largest <= arr[right]){
+            right--;
+        }
+        return new int[]{left, right};
+    }
+
+    private static boolean outOfOrder(int[] arr, int i){
+        int x = arr[i];
+        if(i == 0){
+            return x > arr[i+1];
+        }else if(i == arr.length-1){
+            return x < arr[i-1];
+        }else{
+            return x > arr[i+1] || x < arr[i-1];
+        }
+    }
+}
+
